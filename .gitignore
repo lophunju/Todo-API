@@ -9,3 +9,6 @@ node_modules
 
 # Task Specification of Project
 task specification.*
+
+# .env environment variable file
+.env
