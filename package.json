@@ -1,0 +1,15 @@
+{
+  "name": "todo_api",
+  "version": "1.0.0",
+  "description": "making todo api with node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --inspect app.js",
+    "nodemon": "nodemon --inspect app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}

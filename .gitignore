@@ -1,0 +1,11 @@
+# node_modules installed by npm
+node_modules
+
+# ESLint Configuration
+.eslintrc.js
+
+# VSCode Configuration
+.vscode/
+
+# Task Specification of Project
+task specification.*
