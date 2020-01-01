@@ -1,5 +1,12 @@
+const todoService = require("../Service/todo_service");
+
 exports.createTodo = (req, res) => {
-  res.send("i'm in createTodo");
+  let err;
+  err = todoService.createTodo(req); //동기 필요
+  if (err) {
+    res.status(500).send("Internal Server Error");
+  }
+  res.send("createTodo done");
 };
 
 exports.getAllList = (req, res) => {

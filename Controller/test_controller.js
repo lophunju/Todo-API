@@ -1,4 +1,4 @@
-const Kitten = require("../Config/kittenSchema");
+const Kitten = require("../Mapper/kittenSchema");
 
 exports.createKitten = (req, res) => {
   let fluffy = new Kitten({
