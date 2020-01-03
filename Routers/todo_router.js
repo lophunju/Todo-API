@@ -18,39 +18,48 @@ router.get(["/", "/:param", "/:param/:paramId"], (req, res) => {
     // 상세조회
     todoController.getOne(req, res);
   } else {
-    switch (paramId) {
-      case "1": {
-        // 제목조회
-        todoController.getListByTitle(req, res);
-        break;
+    if (
+      parmaId == 1 ||
+      parmdId == 2 ||
+      paramId == 3 ||
+      paramID == 4 ||
+      paramID == 5
+    ) {
+      switch (paramId) {
+        case "1": {
+          // 제목조회
+          todoController.getListByTitle(req, res);
+          break;
+        }
+        case "2": {
+          // 상태조회
+          todoController.getListByStatus(req, res);
+          break;
+        }
+        case "3": {
+          // context조회
+          todoController.getListByContext(req, res);
+          break;
+        }
+        case "4": {
+          // 마감일조회
+          todoController.getListByDuedate(req, res);
+          break;
+        }
+        case "5": {
+          // 완료일조회
+          todoController.getListByEnddate(req, res);
+          break;
+        }
       }
-      case "2": {
-        // 상태조회
-        todoController.getListByStatus(req, res);
-        break;
-      }
-      case "3": {
-        // context조회
-        todoController.getListByContext(req, res);
-        break;
-      }
-      case "4": {
-        // 마감일조회
-        todoController.getListByDuedate(req, res);
-        break;
-      }
-      case "5": {
-        // 완료일조회
-        todoController.getListByEnddate(req, res);
-        break;
-      }
+    } else {
+      console.log("Invalid paramId has passed to server");
+      res
+        .status(500)
+        .send(
+          "Invalid paramId has passed to server. It should be one of 1,2,3,4,5"
+        );
     }
-    console.log("Invalid paramId has passed to server");
-    res
-      .status(500)
-      .send(
-        "Invalid paramId has passed to server. It should be one of 1,2,3,4,5"
-      );
   }
 });
 
