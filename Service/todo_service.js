@@ -17,16 +17,15 @@ exports.createTodo = async req => {
         if (err) {
           console.log("todoService.creatTodo error");
           console.log(err);
-          resolve(err);
+          resolve(undefined);
         } else {
           console.log("todoService.createTodo success");
           console.log(`result: ${result}`);
-          resolve(undefined);
+          resolve(result);
         }
       }
     );
   });
 
-  let err = await promise;
-  return err;
+  return promise;
 };
