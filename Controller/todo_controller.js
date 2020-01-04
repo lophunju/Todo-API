@@ -10,7 +10,7 @@ exports.getAllList = (req, res) => {
   res.send("i'm in getAllList");
 };
 
-exports.getOne = (req, res) => {
+exports.getOneDetail = (req, res) => {
   res.send("i'm in getOne");
 };
 

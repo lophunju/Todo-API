@@ -7,61 +7,13 @@ const todoController = require("../Controller/todo_controller");
 router.post("/", todoController.createTodo);
 
 // todo 조회
-router.get(["/", "/:param", "/:param/:paramId"], (req, res) => {
-  let param = req.params.param;
-  let paramId = req.params.paramId;
-
-  if (!param) {
-    // 전체조회
-    todoController.getAllList(req, res);
-  } else if (param && !paramId) {
-    // 상세조회
-    todoController.getOne(req, res);
-  } else {
-    if (
-      parmaId == 1 ||
-      parmdId == 2 ||
-      paramId == 3 ||
-      paramID == 4 ||
-      paramID == 5
-    ) {
-      switch (paramId) {
-        case "1": {
-          // 제목조회
-          todoController.getListByTitle(req, res);
-          break;
-        }
-        case "2": {
-          // 상태조회
-          todoController.getListByStatus(req, res);
-          break;
-        }
-        case "3": {
-          // context조회
-          todoController.getListByContext(req, res);
-          break;
-        }
-        case "4": {
-          // 마감일조회
-          todoController.getListByDuedate(req, res);
-          break;
-        }
-        case "5": {
-          // 완료일조회
-          todoController.getListByEnddate(req, res);
-          break;
-        }
-      }
-    } else {
-      console.log("Invalid paramId has passed to server");
-      res
-        .status(500)
-        .send(
-          "Invalid paramId has passed to server. It should be one of 1,2,3,4,5"
-        );
-    }
-  }
-});
+router.get("/", todoController.getAllList); //전체조회
+router.get("/title", todoController.getListByTitle); //제목조회
+router.get("/status", todoController.getListByStatus); //상태조회
+router.get("/context", todoController.getListByContext); //context조회
+router.get("/duedate", todoController.getListByDuedate); //마감일조회
+router.get("/enddate", todoController.getListByEnddate); //완료일조회
+router.get("/:todoId", todoController.getOneDetail); //상세조회
 
 // todo 변경
 router.put("/", todoController.modifyTodo);
