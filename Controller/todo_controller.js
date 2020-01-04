@@ -2,12 +2,14 @@ const todoService = require("../Service/todo_service");
 
 exports.createTodo = async (req, res) => {
   let result = await todoService.createTodo(req);
-  if (result) res.send(result);
+  if (result) res.json(result);
   else res.status(500).send("Internal Server Error");
 };
 
-exports.getAllList = (req, res) => {
-  res.send("i'm in getAllList");
+exports.getAllList = async (req, res) => {
+  let result = await todoService.getAllList();
+  if (result) res.json(result);
+  else res.status(500).send("Internal Server Error");
 };
 
 exports.getOneDetail = (req, res) => {

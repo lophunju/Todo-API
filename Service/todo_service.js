@@ -29,3 +29,18 @@ exports.createTodo = async req => {
 
   return promise;
 };
+
+exports.getAllList = req =>
+  new Promise(resolve => {
+    Todo.find((err, result) => {
+      if (err) {
+        console.log("todoService.getAllList error");
+        console.log(err);
+        resolve(undefined);
+      } else {
+        console.log("todoService.getAllList success");
+        console.log(result);
+        resolve(result);
+      }
+    });
+  });
