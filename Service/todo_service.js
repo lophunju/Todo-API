@@ -30,15 +30,52 @@ exports.createTodo = async req => {
   return promise;
 };
 
-exports.getAllList = req =>
+exports.listOnePage = (field, arg, page) =>
   new Promise(resolve => {
-    Todo.find((err, result) => {
+    const per_page = 1;
+
+    Todo.find(
+      { [field]: new RegExp(arg, "i") },
+      {},
+      { skip: (page - 1) * per_page, limit: per_page },
+      (err, result) => {
+        if (err) {
+          console.log("todoService.listOnePage error");
+          console.log(err);
+          resolve(undefined);
+        } else {
+          console.log("todoService.listOnePage success");
+          console.log(result);
+          resolve(result);
+        }
+      }
+    );
+  });
+
+exports.getCount = req =>
+  new Promise(resolve => {
+    Todo.countDocuments({ type: req.criteria }, (err, count) => {
       if (err) {
-        console.log("todoService.getAllList error");
+        console.log("todoService.getCount error");
         console.log(err);
         resolve(undefined);
       } else {
-        console.log("todoService.getAllList success");
+        console.log("todoService.getCount success");
+        console.log(count);
+        resolve(count);
+      }
+    });
+  });
+
+exports.getOneDetail = _id =>
+  new Promise(resolve => {
+    Todo.findById(_id, (err, result) => {
+      if (err) {
+        console.log("todoService.getOneDetail error");
+        console.log(err);
+        resolve(undefined);
+      } else {
+        console.log("todoService.getOneDetail success");
         console.log(result);
         resolve(result);
       }
